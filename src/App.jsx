@@ -1,33 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const mainStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '100px',
+  };
+
+  const formStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '30px'
+  };
+
+  const buttonStyle = {
+    display:'flex',
+    gap:'10px'
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <body>
+        <main style={mainStyle}>
+          <h1>2024 파리 올림픽</h1>
+          <div style={formStyle}>
+            <p>
+              국가명
+              <br />
+              <input type="text" />
+            </p>
+            <p>
+              금메달
+              <br />
+              <input type="number" />
+            </p>
+            <p>
+              은메달
+              <br />
+              <input type="number" />
+            </p>
+            <p>
+              동메달
+              <br />
+              <input type="number" />
+            </p>
+            <p style={buttonStyle}>
+              <button>국가 추가</button>
+              <button>업데이트</button>
+            </p>
+          </div>
+        </main >
+      </body>
     </>
   )
 }
