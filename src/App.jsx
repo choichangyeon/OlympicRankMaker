@@ -21,7 +21,13 @@ const App = () => {
   };
 
   //국가 목록 state
-  const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState([
+    {country:"한국", gold:20, sliver:32, bronze:44},
+    {country:"미국", gold:20, sliver:32, bronze:44},
+    {country:"일본", gold:20, sliver:32, bronze:44},
+    {country:"중국", gold:20, sliver:32, bronze:44},
+    {country:"영국", gold:20, sliver:32, bronze:44}
+  ]);
 
   //국가 정보 state
   const [country, setCountry] = useState("");
@@ -67,7 +73,22 @@ const App = () => {
 
   //국가 업데이트 함수
   const updateCountry = () => {
-    console.log(countries);
+    const target = countries.find(e => e.country === country);
+    if(target){
+      console.log(target);
+      const newCountries = countries.filter(e => e.country !== target.country).map(e => e);
+      const newInput = {
+        country: country,
+        gold: gold,
+        sliver: sliver,
+        bronze: bronze
+      }
+      setCountries([...newCountries, newInput]);
+      resetInput();
+    }
+    else{
+      alert("해당 국가가 존재하지 않습니다.");
+    }
   }
 
 
