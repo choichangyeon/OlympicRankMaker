@@ -40,6 +40,14 @@ const App = () => {
       bronze: bronze
     }
     setCountries([...countries, newInput]);
+    resetInput();
+  }
+
+  const resetInput = () => {
+    setCountry("");
+    setGold(0);
+    setSliver(0);
+    setBronze(0);
   }
 
   const test = () => {
@@ -62,7 +70,7 @@ const App = () => {
             동메달
             <input type="number" name='bronze' value={bronze} onChange={e => setBronze(e.target.value)} />
             <input type='submit' value="추가하기" name='add'/>
-            {/* <input type='submit' value="업데이트" name='update'/> */}
+            <input type='submit' value="업데이트" name='update'/>
           </form>
           <div>
             {countries.map(e => {
