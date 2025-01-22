@@ -119,7 +119,7 @@ const InputForm = () => {
   return (<>
     <form style={formStyle} onSubmit={eventHandler}>
       국가명
-      <Input type="text" name='country' value={country} onChange={e => setCountry(e.target.value)} placeholder='국가 입력'/>
+      <Input type="text" name='country' value={country} onChange={e => setCountry(e.target.value)} placeholder='국가 입력' />
       금메달
       <Input type="number" name='gold' value={gold} onChange={e => setGold(e.target.value)} />
       은메달
@@ -129,12 +129,7 @@ const InputForm = () => {
       <Button value='추가하기' name='add'></Button>
       <Button value='업데이트' name='update'></Button>
     </form>
-    <div>
-      {countries.map(e => {
-        return <p>{e.country} {e.gold} {e.sliver} {e.bronze}</p>
-      })
-      }
-    </div>
+    <Table countries={countries}></Table>
   </>);
 }
 
@@ -153,4 +148,14 @@ const Button = ({ value, name }) => {
   return <input type='submit' style={buttonStyle} value={value} name={name} />;
 }
 
-//
+//테이블 컴포넌트
+const Table = ({countries}) => {
+
+  
+  return <div>
+    {countries.map(e => {
+      return <p>{e.country} {e.gold} {e.sliver} {e.bronze}</p>
+    })
+    }
+  </div>
+}
