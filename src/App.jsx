@@ -13,8 +13,8 @@ const App = () => {
     <>
       <body>
         <main style={mainStyle}>
-          <Title/>
-          <InputForm/>
+          <Title />
+          <InputForm />
         </main >
       </body>
     </>
@@ -156,13 +156,15 @@ const Button = ({ value, name }) => {
 }
 
 //테이블 컴포넌트
-const Table = ({countries}) => {
+const Table = ({ countries }) => {
 
 
-  return <div>
+  return <table>
+    <thead>국가 금메달 은메달 동메달</thead>
     {countries.map(e => {
-      return <p>{e.country} {e.gold} {e.sliver} {e.bronze}</p>
+      return <tbody>{e.country} {e.gold} {e.sliver} {e.bronze}</tbody>
     })
     }
-  </div>
+  </table>;
+
 }
