@@ -157,14 +157,47 @@ const Button = ({ value, name }) => {
 
 //테이블 컴포넌트
 const Table = ({ countries }) => {
+  const countryStyle = {
 
+  };
 
-  return <table>
-    <thead>국가 금메달 은메달 동메달</thead>
+  const tableStyle = {
+    
+    border:'1px solid black',
+  }
+
+  const thStyle = {
+    
+  };
+
+  const heads = ["국가", "금메달", "은메달", "동메달"];
+
+  return (<table style={{
+    padding:'50px 0 0 0',
+    width:'100%',
+    // backgroundColor:'green'
+  }}>
+    <thead>
+      <tr>
+        {heads.map(head => {
+          return <th style={thStyle}>{head}</th>
+        })}
+      </tr>
+    </thead>
     {countries.map(e => {
-      return <tbody>{e.country} {e.gold} {e.sliver} {e.bronze}</tbody>
+      return <tbody style={{
+        // backgroundColor:'green',
+        textAlign:'center'
+      }}>
+        <tr>
+          <td>{e.country}</td> 
+          <td>{e.gold}</td>
+          <td>{e.sliver}</td> 
+          <td>{e.bronze}</td>
+        </tr>   
+      </tbody>
     })
     }
-  </table>;
+  </table>);
 
 }
