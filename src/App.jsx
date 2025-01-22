@@ -29,10 +29,24 @@ const App = () => {
   const [sliver, setSliver] = useState(0);
   const [bronze, setBronze] = useState(0);
 
+  //입력 폼 이벤트 핸들러
+  const eventHandler = (e) => {
+    e.preventDefault();
+    const event = e.nativeEvent.submitter.name;
+    switch (event) {
+      case "add":
+        addCountry();
+        break;
+      case "update":
+        updateCountry();
+        break;
+      default:
+        break;
+    }
+  }
 
   //국가 추가 시 작동하는 함수
-  const addCountry = (e) => {
-    e.preventDefault();
+  const addCountry = () => {
     const newInput = {
       country: country,
       gold: gold,
@@ -43,6 +57,7 @@ const App = () => {
     resetInput();
   }
 
+  //입력 초기화 함수
   const resetInput = () => {
     setCountry("");
     setGold(0);
@@ -50,7 +65,8 @@ const App = () => {
     setBronze(0);
   }
 
-  const test = () => {
+  //국가 업데이트 함수
+  const updateCountry = () => {
     console.log(countries);
   }
 
@@ -60,17 +76,17 @@ const App = () => {
       <body>
         <main style={mainStyle}>
           <h1>2024 파리 올림픽</h1>
-          <form style={formStyle} onSubmit={addCountry}>
+          <form style={formStyle} onSubmit={eventHandler}>
             국가명
-            <input type="text" name='country' value={country} onChange={e => setCountry(e.target.value)} placeholder='국가 입력'/>
+            <input type="text" name='country' value={country} onChange={e => setCountry(e.target.value)} placeholder='국가 입력' />
             금메달
-            <input type="number" name='gold' value={gold} onChange={e => setGold(e.target.value)}/>
+            <input type="number" name='gold' value={gold} onChange={e => setGold(e.target.value)} />
             은메달
             <input type="number" name='sliver' value={sliver} onChange={e => setSliver(e.target.value)} />
             동메달
             <input type="number" name='bronze' value={bronze} onChange={e => setBronze(e.target.value)} />
-            <input type='submit' value="추가하기" name='add'/>
-            <input type='submit' value="업데이트" name='update'/>
+            <input type='submit' value="추가하기" name='add' />
+            <input type='submit' value="업데이트" name='update' />
           </form>
           <div>
             {countries.map(e => {
