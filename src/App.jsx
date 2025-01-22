@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const App = () => {
   const mainStyle = {
@@ -35,23 +35,26 @@ const InputForm = () => {
   const formStyle = {
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
     gap: '30px'
   };
 
   //국가 목록 state
-  const [countries, setCountries] = useState([
-    { country: "한국", gold: 20, sliver: 32, bronze: 44 },
-    { country: "미국", gold: 20, sliver: 32, bronze: 44 },
-    { country: "일본", gold: 20, sliver: 32, bronze: 44 },
-    { country: "중국", gold: 20, sliver: 32, bronze: 44 },
-    { country: "영국", gold: 20, sliver: 32, bronze: 44 }
-  ]);
+  const [countries, setCountries] = useState(() => {
+    let initial = JSON.parse(window.localStorage.getItem("countries"));
+    return initial;
+  });
 
   //국가 정보 state
   const [country, setCountry] = useState("");
   const [gold, setGold] = useState(0);
   const [sliver, setSliver] = useState(0);
   const [bronze, setBronze] = useState(0);
+
+  //국가 목록 수정될 때 마다 로컬 스토리지 저장
+  useEffect(() => {
+    window.localStorage.setItem("countries", JSON.stringify(countries))
+  }, [countries]);
 
   //입력 초기화 함수
   const resetInput = () => {
@@ -143,7 +146,9 @@ const InputForm = () => {
 //사용자 입력 컴포넌트
 const Input = ({ type, name, value, onChange, placeholder = null }) => {
 
-  return <input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
+  return <input style={{
+    height: '20px'
+  }} type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
 }
 
 //사용자 제출 버튼 컴포넌트
@@ -162,19 +167,19 @@ const Table = ({ countries }) => {
   };
 
   const tableStyle = {
-    
-    border:'1px solid black',
+
+    border: '1px solid black',
   }
 
   const thStyle = {
-    
+
   };
 
   const heads = ["국가", "금메달", "은메달", "동메달"];
 
   return (<table style={{
-    padding:'50px 0 0 0',
-    width:'100%',
+    padding: '50px 0 0 0',
+    width: '100%',
     // backgroundColor:'green'
   }}>
     <thead>
@@ -187,14 +192,14 @@ const Table = ({ countries }) => {
     {countries.map(e => {
       return <tbody style={{
         // backgroundColor:'green',
-        textAlign:'center'
+        textAlign: 'center'
       }}>
         <tr>
-          <td>{e.country}</td> 
+          <td>{e.country}</td>
           <td>{e.gold}</td>
-          <td>{e.sliver}</td> 
+          <td>{e.sliver}</td>
           <td>{e.bronze}</td>
-        </tr>   
+        </tr>
       </tbody>
     })
     }
