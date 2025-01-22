@@ -57,7 +57,7 @@ const InputForm = () => {
   //입력 폼 이벤트 핸들러
   const eventHandler = (e) => {
     e.preventDefault();
-    if(!preventCountry()){
+    if (!preventCountry()) {
       alert("국가를 입력해주세요!");
       return;
     }
@@ -119,15 +119,15 @@ const InputForm = () => {
   return (<>
     <form style={formStyle} onSubmit={eventHandler}>
       국가명
-      <input type="text" name='country' value={country} onChange={e => setCountry(e.target.value)} placeholder='국가 입력' />
+      <Input type="text" name='country' value={country} onChange={e => setCountry(e.target.value)} placeholder='국가 입력'/>
       금메달
-      <input type="number" name='gold' value={gold} onChange={e => setGold(e.target.value)} />
+      <Input type="number" name='gold' value={gold} onChange={e => setGold(e.target.value)} />
       은메달
-      <input type="number" name='sliver' value={sliver} onChange={e => setSliver(e.target.value)} />
+      <Input type="number" name='sliver' value={sliver} onChange={e => setSliver(e.target.value)} />
       동메달
-      <input type="number" name='bronze' value={bronze} onChange={e => setBronze(e.target.value)} />
-      <Button value = '추가하기' name='add'></Button>
-      <Button value = '업데이트' name='update'></Button>
+      <Input type="number" name='bronze' value={bronze} onChange={e => setBronze(e.target.value)} />
+      <Button value='추가하기' name='add'></Button>
+      <Button value='업데이트' name='update'></Button>
     </form>
     <div>
       {countries.map(e => {
@@ -138,10 +138,19 @@ const InputForm = () => {
   </>);
 }
 
-const Button = ({value, name}) => {
+//사용자 입력 컴포넌트
+const Input = ({ type, name, value, onChange, placeholder = null }) => {
+
+  return <input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
+}
+
+//사용자 제출 버튼 컴포넌트
+const Button = ({ value, name }) => {
   const buttonStyle = {
     display: 'flex',
-    width:'100px'
+    width: '100px'
   };
-  return <input type='submit' style={buttonStyle} value = {value} name = {name} />;
+  return <input type='submit' style={buttonStyle} value={value} name={name} />;
 }
+
+//
