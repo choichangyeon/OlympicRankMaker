@@ -13,8 +13,8 @@ const App = () => {
     <>
       <body>
         <main style={mainStyle}>
-          <h1>2024 파리 올림픽</h1>
-          <InputForm></InputForm>
+          <Title/>
+          <InputForm/>
         </main >
       </body>
     </>
@@ -23,6 +23,13 @@ const App = () => {
 
 export default App
 
+//Title 컴포넌트
+const Title = () => {
+
+  return <h1>2024 파리 올림픽</h1>;
+}
+
+//사용자 폼 컴포넌트
 const InputForm = () => {
 
   const formStyle = {
@@ -151,7 +158,7 @@ const Button = ({ value, name }) => {
 //테이블 컴포넌트
 const Table = ({countries}) => {
 
-  
+
   return <div>
     {countries.map(e => {
       return <p>{e.country} {e.gold} {e.sliver} {e.bronze}</p>
