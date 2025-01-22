@@ -35,6 +35,7 @@ const InputForm = () => {
   const formStyle = {
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
     gap: '30px'
   };
 
@@ -137,7 +138,6 @@ const InputForm = () => {
       <Input type="number" name='bronze' value={bronze} onChange={e => setBronze(e.target.value)} />
       <Button value='추가하기' name='add'></Button>
       <Button value='업데이트' name='update'></Button>
-      <Button value='테스트' name='test'></Button>
     </form>
     <Table countries={countries}></Table>
   </>);
@@ -146,7 +146,9 @@ const InputForm = () => {
 //사용자 입력 컴포넌트
 const Input = ({ type, name, value, onChange, placeholder = null }) => {
 
-  return <input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
+  return <input style={{
+    height: '20px'
+  }} type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
 }
 
 //사용자 제출 버튼 컴포넌트
