@@ -40,7 +40,7 @@ const App = () => {
       bronze: bronze
     }
     setCountries([...countries, newInput]);
-    console.log()
+    console.log(countries)
   }
 
   const test = () => {
