@@ -19,7 +19,7 @@ const Table = ({ countries, setCountries, heads }) => {
         const target = e.target.value
         const newCountries = countries.filter(e => e.country !== target).map(e => e);
         if (newCountries.length === 0) {
-            setCountries(null);
+            setCountries([]);
         }
         else { setCountries([...newCountries]); }
     }
@@ -27,7 +27,7 @@ const Table = ({ countries, setCountries, heads }) => {
 
 
     return (
-        (countries) ? <table style={{
+        (countries.length !== 0) ? <table style={{
             padding: '50px 0 0 0',
             width: '100%',
             // backgroundColor:'green'

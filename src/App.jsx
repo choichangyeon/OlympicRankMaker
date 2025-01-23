@@ -2,14 +2,15 @@ import React from 'react'
 import Title from './Title';
 import InputForm from './InputForm';
 
+const mainStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '5px',
+};
+
 const App = () => {
-  const mainStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '5px',
-  };
 
   return (
     <>
