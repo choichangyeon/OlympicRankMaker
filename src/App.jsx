@@ -34,14 +34,12 @@ const App = () => {
     </>
   );
 };
-//List 형태의 컴포너트도 있으면 좋겠다 / 분리 필요
-//state를 이곳에 생성..
 
 //기준으로 정렬 함수
 const sortByHead = (countries, head) => {
   let sortCountries = [...countries];
   switch (
-    head //set 하지말고 그냥 소팅된걸 넘긴다. - 완료
+    head
   ) {
     case "금메달":
       sortCountries.sort((a, b) => {

@@ -1,8 +1,7 @@
 import React from "react";
 
 //사용자 제출 버튼 컴포넌트
-const Submit = ({ value, name }) => {
-  //이름 다시 설정
+const SubmitBtn = ({ value, name }) => {
   const submitStyle = {
     display: "flex",
     width: "80px",
@@ -10,4 +9,4 @@ const Submit = ({ value, name }) => {
   return <input type="submit" style={submitStyle} value={value} name={name} />;
 };
 
-export default Submit;
+export default SubmitBtn;
