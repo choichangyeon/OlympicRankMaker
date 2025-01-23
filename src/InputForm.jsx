@@ -72,7 +72,7 @@ const InputForm = () => {
         }
     }
 
-    //국가 추가 시 작동하는 함수
+    //국가 추가 시 작동하는 함수 - 초기 상태 처리
     const addCountry = () => {
         if (!preventCountry()) {
             alert("국가를 입력해주세요!");
@@ -98,7 +98,7 @@ const InputForm = () => {
 
     }
 
-    //국가 업데이트 함수
+    //국가 업데이트 함수 - 초기 상태 처리
     const updateCountry = () => {
         if (!preventCountry()) {
             alert("국가를 입력해주세요!");
