@@ -183,7 +183,7 @@ const InputForm = () => {
             <Submit value='정렬하기' name='sort' />
             <DropDown heads={heads} setHead={setHead} state={head} />
         </form>
-        <Table countries={countries} heads={heads}></Table>
+        <Table countries={countries} setCountries={setCountries} heads={heads}></Table>
     </>);
 }
 
