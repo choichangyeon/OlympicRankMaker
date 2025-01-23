@@ -34,8 +34,6 @@ const InputForm = () => {
     //   bronze:0
     // });
 
-
-
     //국가 목록 수정될 때 마다 로컬 스토리지 저장
     useEffect(() => {
         window.localStorage.setItem("countries", JSON.stringify(countries))
@@ -117,39 +115,6 @@ const InputForm = () => {
 
     }
 
-    //기준으로 정렬 함수
-    const sortByHead = () => {
-        // if (countries.length === 0) {
-        //     alert("국가를 추가해주세요!");
-        //     return null;
-        // }
-        let sortCountries = [...countries];
-        switch (head) { //set 하지말고 그냥 소팅된걸 넘긴다. - 1
-            case "국가":
-                sortCountries.sort((a, b) => {
-                    return a.country.localeCompare(b.country);
-                });
-                return sortCountries;
-            case "금메달":
-                sortCountries.sort((a, b) => {
-                    return b.gold - a.gold;
-                });
-                return sortCountries;
-            case "은메달":
-                sortCountries.sort((a, b) => {
-                    return b.sliver - a.sliver;
-                });
-                return sortCountries;
-            case "동메달":
-                sortCountries.sort((a, b) => {
-                    return b.bronze - a.bronze;
-                });
-                return sortCountries;
-            default:
-                break;
-        }
-    }
-
     //국가 미입력 예방 함수
     const preventCountry = () => {
         return (country || false);
@@ -169,8 +134,35 @@ const InputForm = () => {
             <Submit value='업데이트' name='update' />
             <DropDown heads={heads} setHead={setHead} state={head} />
         </form>
-        <Table countries={sortByHead() ?? countries} setCountries={setCountries} heads={heads}></Table>
+        <Table countries={sortByHead(countries, head) ?? countries} setCountries={setCountries} heads={heads}></Table>
     </>);
+}
+
+//기준으로 정렬 함수
+const sortByHead = (countries, head) => {
+    let sortCountries = [...countries];
+    switch (head) { //set 하지말고 그냥 소팅된걸 넘긴다. - 완료
+        case "금메달":
+            sortCountries.sort((a, b) => {
+                return b.gold - a.gold;
+            });
+            return sortCountries;
+        case "은메달":
+            sortCountries.sort((a, b) => {
+                return b.sliver - a.sliver;
+            });
+            return sortCountries;
+        case "동메달":
+            sortCountries.sort((a, b) => {
+                return b.bronze - a.bronze;
+            });
+            return sortCountries;
+        default:
+            sortCountries.sort((a, b) => {
+                return a.country.localeCompare(b.country);
+            });
+            return sortCountries;
+    }
 }
 
 const formStyle = {
