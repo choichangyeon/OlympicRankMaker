@@ -7,11 +7,13 @@ const DropDown = ({ heads, setHead, state }) => {
         setHead(e.target.value);
     }
 
-    return <select onChange={headSelect} value={state}>{
-        heads.map(head => {
-            return <option>{head}</option>;
-        })
-    }</select>;
+    return <>
+        <select onChange={headSelect} value={state}>{
+            heads.map(head => {
+                return <option key={head}>{head}</option>;
+            })
+        }</select>
+    </>;
 }
 
 export default DropDown

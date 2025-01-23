@@ -14,12 +14,10 @@ const App = () => {
 
   return (
     <>
-      <body>
-        <main style={mainStyle}>
-          <Title />
-          <InputForm />
-        </main >
-      </body>
+      <main style={mainStyle}>
+        <Title />
+        <InputForm />
+      </main >
     </>
   )
 }
