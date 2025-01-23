@@ -60,9 +60,6 @@ const InputForm = () => {
             case "update":
                 updateCountry();
                 break;
-            case "sort":
-                sortByHead();
-                break;
             default:
                 break;
         }
@@ -122,36 +119,32 @@ const InputForm = () => {
 
     //기준으로 정렬 함수
     const sortByHead = () => {
-        if (!countries) {
+        if (countries.length === 0) {
             alert("국가를 추가해주세요!");
-            return;
+            return null;
         }
-        let sortCountries = countries;
+        let sortCountries = [...countries];
         switch (head) { //set 하지말고 그냥 소팅된걸 넘긴다. - 1
             case "국가":
                 sortCountries.sort((a, b) => {
                     return a.country.localeCompare(b.country);
                 });
-                setCountries([...sortCountries]);
-                break;
+                return sortCountries;
             case "금메달":
                 sortCountries.sort((a, b) => {
                     return b.gold - a.gold;
                 });
-                setCountries([...sortCountries]);
-                break;
+                return sortCountries;
             case "은메달":
                 sortCountries.sort((a, b) => {
                     return b.sliver - a.sliver;
                 });
-                setCountries([...sortCountries]);
-                break;
+                return sortCountries;
             case "동메달":
                 sortCountries.sort((a, b) => {
                     return b.bronze - a.bronze;
                 });
-                setCountries([...sortCountries]);
-                break;
+                return sortCountries;
 
             default:
                 break;
@@ -168,17 +161,16 @@ const InputForm = () => {
             국가명
             <Input type="text" name='country' value={country} onChange={e => setCountry(e.target.value)} placeholder='국가 입력' />
             금메달
-            <Input type="number" name='gold' value={gold} onChange={e => setGold(e.target.value)} min='0' />
+            <Input type="number" name='gold' value={gold} onChange={e => setGold(Number(e.target.value))} min='0' />
             은메달
-            <Input type="number" name='sliver' value={sliver} onChange={e => setSliver(e.target.value)} min='0' />
+            <Input type="number" name='sliver' value={sliver} onChange={e => setSliver(Number(e.target.value))} min='0' />
             동메달
-            <Input type="number" name='bronze' value={bronze} onChange={e => setBronze(e.target.value)} min='0' />
+            <Input type="number" name='bronze' value={bronze} onChange={e => setBronze(Number(e.target.value))} min='0' />
             <Submit value='추가하기' name='add' />
             <Submit value='업데이트' name='update' />
-            <Submit value='정렬하기' name='sort' />
             <DropDown heads={heads} setHead={setHead} state={head} />
         </form>
-        <Table countries={countries} setCountries={setCountries} heads={heads}></Table>
+        <Table countries={sortByHead() || countries} setCountries={setCountries} heads={heads}></Table>
     </>);
 }
 

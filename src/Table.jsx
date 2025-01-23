@@ -35,12 +35,12 @@ const Table = ({ countries, setCountries, heads }) => {
             <thead>
                 <tr>
                     {heads.map(head => {
-                        return <th style={thStyle}>{head}</th>
+                        return <th key={head} style={thStyle}>{head}</th>
                     })}
                 </tr>
             </thead>
             {countries.map(e => {
-                return <tbody style={{
+                return <tbody key={e.country} style={{
                     // backgroundColor:'green',
                     textAlign: 'center'
                 }}>
@@ -49,7 +49,7 @@ const Table = ({ countries, setCountries, heads }) => {
                         <td>{e.gold}</td>
                         <td>{e.sliver}</td>
                         <td>{e.bronze}</td>
-                        <button value={e.country} onClick={test}>삭제</button>
+                        <td><button value={e.country} onClick={test}>삭제</button></td>
                     </tr>
                 </tbody>
             })

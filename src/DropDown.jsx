@@ -9,7 +9,7 @@ const DropDown = ({ heads, setHead, state }) => {
 
     return <select onChange={headSelect} value={state}>{
         heads.map(head => {
-            return <option>{head}</option>;
+            return <option key={head}>{head}</option>;
         })
     }</select>;
 }
