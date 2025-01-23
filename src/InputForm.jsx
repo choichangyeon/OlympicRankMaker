@@ -119,10 +119,10 @@ const InputForm = () => {
 
     //기준으로 정렬 함수
     const sortByHead = () => {
-        if (countries.length === 0) {
-            alert("국가를 추가해주세요!");
-            return null;
-        }
+        // if (countries.length === 0) {
+        //     alert("국가를 추가해주세요!");
+        //     return null;
+        // }
         let sortCountries = [...countries];
         switch (head) { //set 하지말고 그냥 소팅된걸 넘긴다. - 1
             case "국가":
@@ -145,7 +145,6 @@ const InputForm = () => {
                     return b.bronze - a.bronze;
                 });
                 return sortCountries;
-
             default:
                 break;
         }
@@ -170,7 +169,7 @@ const InputForm = () => {
             <Submit value='업데이트' name='update' />
             <DropDown heads={heads} setHead={setHead} state={head} />
         </form>
-        <Table countries={sortByHead() || countries} setCountries={setCountries} heads={heads}></Table>
+        <Table countries={sortByHead() ?? countries} setCountries={setCountries} heads={heads}></Table>
     </>);
 }
 
