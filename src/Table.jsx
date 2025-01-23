@@ -15,7 +15,7 @@ const Table = ({ countries, setCountries, heads }) => {
 
     };
 
-    const test = (e) => {
+    const delCountry = (e) => {
         const target = e.target.value
         const newCountries = countries.filter(e => e.country !== target).map(e => e);
         if (newCountries.length === 0) {
@@ -29,7 +29,7 @@ const Table = ({ countries, setCountries, heads }) => {
     return (
         (countries.length !== 0) ? <table style={{
             padding: '50px 0 0 0',
-            width: '100%',
+            width: '1000px',
             // backgroundColor:'green'
         }}>
             <thead>
@@ -49,7 +49,7 @@ const Table = ({ countries, setCountries, heads }) => {
                         <td>{e.gold}</td>
                         <td>{e.sliver}</td>
                         <td>{e.bronze}</td>
-                        <td><button value={e.country} onClick={test}>삭제</button></td>
+                        <td><button value={e.country} onClick={delCountry}>삭제</button></td>
                     </tr>
                 </tbody>
             })
