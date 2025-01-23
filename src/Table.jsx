@@ -1,7 +1,7 @@
 import React from 'react'
 
 //테이블 컴포넌트
-const Table = ({ countries, heads }) => {
+const Table = ({ countries, setCountries, heads }) => {
     const countryStyle = {
 
     };
@@ -14,6 +14,16 @@ const Table = ({ countries, heads }) => {
     const thStyle = {
 
     };
+
+    const test = (e) => {
+        const target = e.target.value
+        const newCountries = countries.filter(e => e.country !== target).map(e => e);
+        if (newCountries.length === 0) {
+            setCountries(null);
+        }
+        else { setCountries([...newCountries]); }
+    }
+
 
 
     return (
@@ -39,6 +49,7 @@ const Table = ({ countries, heads }) => {
                         <td>{e.gold}</td>
                         <td>{e.sliver}</td>
                         <td>{e.bronze}</td>
+                        <button value={e.country} onClick={test}>삭제</button>
                     </tr>
                 </tbody>
             })
