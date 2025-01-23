@@ -12,7 +12,7 @@ const InputForm = () => {
     //국가 목록 state
     const [countries, setCountries] = useState(() => {
         let initial = JSON.parse(window.localStorage.getItem("countries"));
-        return initial || []; //빈배열로 처리
+        return initial || []; //빈배열로 처리 - 완
     });
 
     //국가 정보 state
@@ -103,7 +103,7 @@ const InputForm = () => {
         let target = countries.find(e => e.country === country);
 
         if (!target) {
-            alert("해당 국가가 존재하지 않습니다."); //early return; guard clause
+            alert("해당 국가가 존재하지 않습니다."); //early return; guard clause - 완
             return;
         }
 
