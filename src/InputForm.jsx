@@ -4,19 +4,15 @@ import Submit from './Submit';
 import DropDown from './DropDown';
 import Table from './Table';
 
+
+
 //사용자 폼 컴포넌트
 const InputForm = () => {
-    const formStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: '25px'
-    };
 
     //국가 목록 state
     const [countries, setCountries] = useState(() => {
         let initial = JSON.parse(window.localStorage.getItem("countries"));
-        return initial || null;
+        return initial || []; //빈배열로 처리 - 완
     });
 
     //국가 정보 state
@@ -78,23 +74,22 @@ const InputForm = () => {
             alert("국가를 입력해주세요!");
             return;
         }
-        else {
-            let target
-            countries ? target = countries.find(e => e.country === country) : null;
-            if (target) {
-                alert("해당 국가가 리스트에 존재합니다.");
-            }
-            else {
-                const newInput = {
-                    country: country,
-                    gold: gold,
-                    sliver: sliver,
-                    bronze: bronze
-                }
-                countries ? setCountries([...countries, newInput]) : setCountries([newInput]);
-                resetInput();
-            }
+
+        let target = countries.find(e => e.country === country);
+
+        if (target) {
+            alert("해당 국가가 리스트에 존재합니다.");
+            return;
         }
+
+        const newInput = {
+            country: country,
+            gold: gold,
+            sliver: sliver,
+            bronze: bronze
+        }
+        setCountries([...countries, newInput]);
+        resetInput();
 
     }
 
@@ -104,24 +99,24 @@ const InputForm = () => {
             alert("국가를 입력해주세요!");
             return;
         }
-        else {
-            let target
-            countries ? target = countries.find(e => e.country === country) : null;
-            if (target) {
-                const newCountries = countries.filter(e => e.country !== target.country).map(e => e);
-                const newInput = {
-                    country: country,
-                    gold: gold,
-                    sliver: sliver,
-                    bronze: bronze
-                }
-                setCountries([...newCountries, newInput]);
-                resetInput();
-            }
-            else {
-                alert("해당 국가가 존재하지 않습니다.");
-            }
+
+        let target = countries.find(e => e.country === country);
+
+        if (!target) {
+            alert("해당 국가가 존재하지 않습니다."); //early return; guard clause - 완
+            return;
         }
+
+        const newCountries = countries.filter(e => e.country !== target.country).map(e => e);
+        const newInput = {
+            country: country,
+            gold: gold,
+            sliver: sliver,
+            bronze: bronze
+        }
+        setCountries([...newCountries, newInput]);
+        resetInput();
+
 
     }
 
@@ -132,7 +127,7 @@ const InputForm = () => {
             return;
         }
         let sortCountries = countries;
-        switch (head) {
+        switch (head) { //set 하지말고 그냥 소팅된걸 넘긴다. - 1
             case "국가":
                 sortCountries.sort((a, b) => {
                     return a.country.localeCompare(b.country);
@@ -187,4 +182,12 @@ const InputForm = () => {
     </>);
 }
 
+const formStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: '25px'
+};
+
 export default InputForm
+
