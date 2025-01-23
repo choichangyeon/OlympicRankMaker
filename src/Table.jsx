@@ -14,10 +14,10 @@ const Table = ({ countries, setCountries, heads }) => {
     const thStyle = {
 
     };
-
-    const delCountry = (e) => {
+    //국가 삭제 함수
+    const delCountry = (e) => { // 비효율적 고민하고 줄이기
         const target = e.target.value
-        const newCountries = countries.filter(e => e.country !== target).map(e => e);
+        const newCountries = countries.filter(e => e.country !== target).map(e => e); //map 필요없음
         if (newCountries.length === 0) {
             setCountries([]);
         }
@@ -27,7 +27,7 @@ const Table = ({ countries, setCountries, heads }) => {
 
 
     return (
-        (countries.length !== 0) ? <table style={{
+        (countries.length !== 0) ? <table style={{// 0이 아니란 표현보다 다른 걸로 고쳐서
             padding: '50px 0 0 0',
             width: '1000px',
             // backgroundColor:'green'
