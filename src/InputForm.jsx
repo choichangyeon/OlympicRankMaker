@@ -15,24 +15,19 @@ const InputForm = () => {
         return initial || []; //빈배열로 처리 - 완
     });
 
-    //국가 정보 state
-    const [country, setCountry] = useState("");
-    const [gold, setGold] = useState(0);
-    const [sliver, setSliver] = useState(0);
-    const [bronze, setBronze] = useState(0);
-
     //정렬 기준 state
     const [head, setHead] = useState("국가");
 
     //table head 목록
     const heads = ["국가", "금메달", "은메달", "동메달"];
 
-    // const [information, setInfo] = useState({
-    //   country:"",
-    //   gold:0,
-    //   sliver:0,
-    //   bronze:0
-    // });
+    //국가 정보 state
+    const [information, setInfo] = useState({
+        country: "",
+        gold: 0,
+        sliver: 0,
+        bronze: 0
+    });
 
     //국가 목록 수정될 때 마다 로컬 스토리지 저장
     useEffect(() => {
@@ -41,10 +36,12 @@ const InputForm = () => {
 
     //입력 초기화 함수
     const resetInput = () => {
-        setCountry("");
-        setGold(0);
-        setSliver(0);
-        setBronze(0);
+        setInfo({
+            country: "",
+            gold: 0,
+            sliver: 0,
+            bronze: 0
+        });
     }
 
     //입력 폼 이벤트 핸들러
@@ -70,19 +67,16 @@ const InputForm = () => {
             return;
         }
 
-        let target = countries.find(e => e.country === country);
+        let target = countries.find(e => e.country === information.country);
 
         if (target) {
             alert("해당 국가가 리스트에 존재합니다.");
             return;
         }
 
-        const newInput = {
-            country: country,
-            gold: gold,
-            sliver: sliver,
-            bronze: bronze
-        }
+        console.log(information);
+
+        const newInput = information;
         setCountries([...countries, newInput]);
         resetInput();
 
@@ -95,7 +89,7 @@ const InputForm = () => {
             return;
         }
 
-        let target = countries.find(e => e.country === country);
+        let target = countries.find(e => e.country === information.country);
 
         if (!target) {
             alert("해당 국가가 존재하지 않습니다."); //early return; guard clause - 완
@@ -103,12 +97,7 @@ const InputForm = () => {
         }
 
         const newCountries = countries.filter(e => e.country !== target.country).map(e => e);
-        const newInput = {
-            country: country,
-            gold: gold,
-            sliver: sliver,
-            bronze: bronze
-        }
+        const newInput = information;
         setCountries([...newCountries, newInput]);
         resetInput();
 
@@ -117,19 +106,19 @@ const InputForm = () => {
 
     //국가 미입력 예방 함수
     const preventCountry = () => {
-        return (country || false);
+        return (information.country || false);
     }
 
     return (<>
         <form style={formStyle} onSubmit={eventHandler}>
             국가명
-            <Input type="text" name='country' value={country} onChange={e => setCountry(e.target.value)} placeholder='국가 입력' />
+            <Input type="text" name='country' value={information.country} onChange={e => setInfo({ ...information, country: e.target.value })} placeholder='국가 입력' />
             금메달
-            <Input type="number" name='gold' value={gold} onChange={e => setGold(Number(e.target.value))} min='0' />
+            <Input type="number" name='gold' value={information.gold} onChange={e => setInfo({ ...information, gold: Number(e.target.value) })} min='0' />
             은메달
-            <Input type="number" name='sliver' value={sliver} onChange={e => setSliver(Number(e.target.value))} min='0' />
+            <Input type="number" name='sliver' value={information.sliver} onChange={e => setInfo({ ...information, sliver: Number(e.target.value) })} min='0' />
             동메달
-            <Input type="number" name='bronze' value={bronze} onChange={e => setBronze(Number(e.target.value))} min='0' />
+            <Input type="number" name='bronze' value={information.bronze} onChange={e => setInfo({...information, bronze:Number(e.target.value)})} min='0' />
             <Submit value='추가하기' name='add' />
             <Submit value='업데이트' name='update' />
             <DropDown heads={heads} setHead={setHead} state={head} />
