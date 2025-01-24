@@ -154,7 +154,7 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
         />
         <SubmitBtn value="추가하기" name={EVENT_TYPE.ADD} />
         <SubmitBtn value="업데이트" name={EVENT_TYPE.UPDATE} />
-        <DropDown heads={heads} setValue={setHead} state={head} />
+        <DropDown label={"정렬기준"} heads={heads} setValue={setHead} state={head} />
       </form>
     </>
   );
@@ -163,7 +163,8 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
 const formStyle = {
   display: "flex",
   flexDirection: "row",
-  alignItems: "center",
+  alignItems: "end",
+  height:"100px",
   gap: "25px",
 };
 
