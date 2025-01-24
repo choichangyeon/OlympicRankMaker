@@ -9,11 +9,11 @@ const RadioBtn = ({ heads, setValue }) => {
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
         alignItems: "center",
       }}
     >
-      <label>[정렬 기준]</label>
+      <label> [정렬 기준] </label>
       {heads.map((head) => {
         return (
           <>

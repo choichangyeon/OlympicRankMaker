@@ -154,14 +154,8 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
           type={INPUT_TYPE.SUBMIT}
           style={submitStyle}
         />
-        <RadioBtn heads={heads} setValue={setHead}></RadioBtn>
-        <DropDown
-          label={"정렬기준"}
-          heads={heads}
-          setValue={setHead}
-          state={head}
-        />
       </form>
+      <RadioBtn heads={heads} setValue={setHead}></RadioBtn>
     </>
   );
 };
