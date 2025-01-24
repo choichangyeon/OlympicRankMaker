@@ -192,8 +192,7 @@
 
 ###
 
-<p align="left">
-  ```markdown
+```markdown
 📦 
 ├─ .github
 │  └─ ISSUE_TEMPLATE
