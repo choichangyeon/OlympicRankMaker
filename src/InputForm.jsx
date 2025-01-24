@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Input from "./Input";
 import DropDown from "./DropDown";
-import SubmitBtn from "./SubmitBtn";
+import RadioBtn from "./RadioBtn";
 
 //사용자 폼 컴포넌트
 const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
@@ -164,6 +164,7 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
           type={INPUT_TYPE.SUBMIT}
           style={submitStyle}
         />
+        <RadioBtn heads={heads} setValue={setHead}></RadioBtn>
         <DropDown
           label={"정렬기준"}
           heads={heads}
@@ -178,7 +179,7 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
 const formStyle = {
   display: "flex",
   flexDirection: "row",
-  alignItems: "end",
+  alignItems: "center",
   height: "100px",
   gap: "25px",
 };
