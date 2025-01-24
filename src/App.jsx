@@ -11,9 +11,6 @@ const App = () => {
   //정렬 기준 state
   const [head, setHead] = useState("국가");
 
-  //head 목록
-  const heads = ["국가", "금메달", "은메달", "동메달"];
-
   return (
     <main style={mainStyle}>
       <Title />
@@ -67,6 +64,9 @@ const mainStyle = {
   alignItems: "center",
   padding: "5px",
 };
+
+//head 목록
+const heads = ["국가", "금메달", "은메달", "동메달"];
 
 export default App;
 
