@@ -35,12 +35,6 @@
 ###
 
 <div align="left">
-  <img height="40" src="https://github.com/user-attachments/assets/895389b3-6262-44c3-811d-f740f7602be3"  />
-</div>
-
-###
-
-<div align="left">
   <img height="80" src="https://github.com/user-attachments/assets/cda8f389-1f1c-43cf-8533-cb8b2baa6671"  />
 </div>
 
@@ -61,12 +55,6 @@
 ###
 
 <div align="left">
-  <img height="35" src="https://github.com/user-attachments/assets/8b9ed6c9-3fa0-4efd-aa41-f8f555d6b5cc"  />
-</div>
-
-###
-
-<div align="left">
   <img height="80" src="https://github.com/user-attachments/assets/6b44419a-5d1e-46c0-a814-72f35f3a51fa"  />
 </div>
 
@@ -77,12 +65,6 @@
 ###
 
 <p align="left">사용자가 고른 기준에 따라 테이블을 정렬합니다.</p>
-
-###
-
-<div align="left">
-  <img height="50" src="https://github.com/user-attachments/assets/9699e79b-00e8-4c20-8cf0-4f2891d88c04"  />
-</div>
 
 ###
 
