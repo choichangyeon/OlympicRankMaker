@@ -1,5 +1,7 @@
 <h1 align="left">OlympicRankMaker</h1>
 
+<p align="left">파리 올림픽 랭킹 메이커</p>
+
 ###
 
 <h2 align="left">About Feature</h2>
