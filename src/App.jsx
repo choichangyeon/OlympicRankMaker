@@ -11,36 +11,29 @@ const App = () => {
   //정렬 기준 state
   const [head, setHead] = useState("국가");
 
-  //table head 목록
-  const heads = ["국가", "금메달", "은메달", "동메달"];
-
   return (
-    <>
-      <main style={mainStyle}>
-        <Title />
-        <InputForm
-          countries={countries}
-          setCountries={setCountries}
-          heads={heads}
-          head={head}
-          setHead={setHead}
-        />
-        <Table
-          countries={sortByHead(countries, head) ?? countries}
-          setCountries={setCountries}
-          heads={heads}
-        ></Table>
-      </main>
-    </>
+    <main style={mainStyle}>
+      <Title />
+      <InputForm
+        countries={countries}
+        setCountries={setCountries}
+        heads={heads}
+        head={head}
+        setHead={setHead}
+      />
+      <Table
+        countries={sortByHead(countries, head) ?? countries}
+        setCountries={setCountries}
+        heads={heads}
+      ></Table>
+    </main>
   );
 };
 
 //기준으로 정렬 함수
 const sortByHead = (countries, head) => {
   let sortCountries = [...countries];
-  switch (
-    head
-  ) {
+  switch (head) {
     case "금메달":
       sortCountries.sort((a, b) => {
         return b.gold - a.gold;
@@ -72,4 +65,15 @@ const mainStyle = {
   padding: "5px",
 };
 
+//head 목록
+const heads = ["국가", "금메달", "은메달", "동메달"];
+
 export default App;
+
+//건전한 피드백 목록
+
+//메달 갯수 0개 default값 수정 - 완
+//정렬 기준 라벨 달아주기 - 완
+//정렬 기준 라디오 버튼 고려 - 이건 피드백 받아보자 만들긴 함
+//삭제 태그에 헤드 내용 만들기 - 완
+//입력은 받고 나라 이름 검사 - 완

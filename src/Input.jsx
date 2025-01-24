@@ -6,17 +6,16 @@ const Input = ({
   type,
   name,
   value,
-  onChange,
+  onChange = null,
   placeholder = null,
   min = null,
+  style = null
 }) => {
   return (
     <>
       {label && <label>{label}</label>}
       <input
-        style={{
-          height: "20px",
-        }}
+        style={style}
         type={type}
         name={name}
         value={value}
