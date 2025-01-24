@@ -152,9 +152,24 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
           placeholder="동메달 개수"
           min="0"
         />
-        <SubmitBtn value="추가하기" name={EVENT_TYPE.ADD} />
-        <SubmitBtn value="업데이트" name={EVENT_TYPE.UPDATE} />
-        <DropDown label={"정렬기준"} heads={heads} setValue={setHead} state={head} />
+        <Input
+          value="추가하기"
+          name={EVENT_TYPE.ADD}
+          type={INPUT_TYPE.SUBMIT}
+          style={submitStyle}
+        />
+        <Input
+          value="업데이트"
+          name={EVENT_TYPE.UPDATE}
+          type={INPUT_TYPE.SUBMIT}
+          style={submitStyle}
+        />
+        <DropDown
+          label={"정렬기준"}
+          heads={heads}
+          setValue={setHead}
+          state={head}
+        />
       </form>
     </>
   );
@@ -164,13 +179,17 @@ const formStyle = {
   display: "flex",
   flexDirection: "row",
   alignItems: "end",
-  height:"100px",
+  height: "100px",
   gap: "25px",
+};
+
+const submitStyle = {
+  display: "flex",
+  width: "80px",
 };
 
 const LOCAL_STORAGE_KEY = "countries";
 const INITIAL_VAL = "";
-const MEDAL_INITIAL_VAL = 0;
 const EVENT_TYPE = {
   ADD: "add",
   UPDATE: "update",
@@ -178,6 +197,7 @@ const EVENT_TYPE = {
 const INPUT_TYPE = {
   TEXT: "text",
   NUMBER: "number",
+  SUBMIT: "submit",
 };
 const INPUT_NAME = {
   COUNTRY: "country",
