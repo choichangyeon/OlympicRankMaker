@@ -30,6 +30,9 @@ const Table = ({ countries, setCountries, heads }) => {
               </th>
             );
           })}
+          <th key="액션" style={thStyle}>
+            ACTION
+          </th>
         </tr>
       </thead>
       {countries.map((e) => {
