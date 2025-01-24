@@ -58,6 +58,11 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
       return;
     }
 
+    if (preventMedal()) {
+      alert("메달을 입력해주세요!");
+      return;
+    }
+
     const newInput = information;
     setCountries([...countries, newInput]);
     resetInput();
@@ -77,6 +82,11 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
       return;
     }
 
+    if (preventMedal()) {
+      alert("메달을 입력해주세요!");
+      return;
+    }
+
     const newCountries = countries.filter((e) => e.country !== target.country);
     const newInput = information;
     setCountries([...newCountries, newInput]);
@@ -86,6 +96,16 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
   //국가 미입력 예방 함수
   const preventCountry = () => {
     return information.country || false;
+  };
+
+  //메달 미입력 예방 함수
+  const preventMedal = () => {
+    return (
+      typeof information.gold === "string" ||
+      typeof information.sliver === "string" ||
+      typeof information.bronze === "string" ||
+      false
+    );
   };
 
   return (
@@ -107,6 +127,7 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
           onChange={(e) =>
             setInfo({ ...information, gold: Number(e.target.value) })
           }
+          placeholder="금메달 개수"
           min="0"
         />
         <Input
@@ -117,6 +138,7 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
           onChange={(e) =>
             setInfo({ ...information, sliver: Number(e.target.value) })
           }
+          placeholder="은메달 개수"
           min="0"
         />
         <Input
@@ -127,6 +149,7 @@ const InputForm = ({ countries, setCountries, heads, head, setHead }) => {
           onChange={(e) =>
             setInfo({ ...information, bronze: Number(e.target.value) })
           }
+          placeholder="동메달 개수"
           min="0"
         />
         <SubmitBtn value="추가하기" name={EVENT_TYPE.ADD} />
@@ -146,6 +169,7 @@ const formStyle = {
 
 const LOCAL_STORAGE_KEY = "countries";
 const INITIAL_VAL = "";
+const MEDAL_INITIAL_VAL = 0;
 const EVENT_TYPE = {
   ADD: "add",
   UPDATE: "update",
@@ -155,11 +179,11 @@ const INPUT_TYPE = {
   NUMBER: "number",
 };
 const INPUT_NAME = {
-  COUNTRY:"country",
-  GOLD:"gold",
-  SLIVER:"sliver",
-  BRONZE:"bronze"
-}
+  COUNTRY: "country",
+  GOLD: "gold",
+  SLIVER: "sliver",
+  BRONZE: "bronze",
+};
 // const COUNTRY_LIST = ["가나", "가봉", "가이아나", "감비아", "개인 중립", "과테말라", "괌", "그레나다",
 //   "그리스", "기니", "기니비사우", "나미비아", "나우루", "나이지리아", "난민", "남수단",
 //   "남아프리카 공화국", "네덜란드", "네팔", "노르웨이", "뉴질랜드", "니제르", "니카라과",
